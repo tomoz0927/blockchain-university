@@ -1,0 +1,437 @@
+<title>醤油ついったー</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;900&family=Inter:wght@400;600&display=swap">
+<style>
+/* Layout: one narrow timeline column; composer on top, a soy dish fills as you type */
+:root {
+  --bg: #F5F3F0;
+  --surface: #FFFFFF;
+  --fg: #24140B;
+  --muted: #7A6A5F;
+  --line: #E4DDD6;
+  --soy: #5A2A10;
+  --accent: #9A4317;
+  --accent-ink: #FFFFFF;
+  --chip: #F1E7DE;
+  --danger: #A12C2C;
+  --f-display: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --f-body: "Inter", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #160D08; --surface: #21150E; --fg: #F0E6DD; --muted: #A8968A;
+    --line: #3A2A1F; --soy: #2E150A; --accent: #DB8A4F; --accent-ink: #1A0E07;
+    --chip: #33221A; --danger: #E07B7B; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #160D08; --surface: #21150E; --fg: #F0E6DD; --muted: #A8968A;
+  --line: #3A2A1F; --soy: #2E150A; --accent: #DB8A4F; --accent-ink: #1A0E07;
+  --chip: #33221A; --danger: #E07B7B; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--f-body);
+  font-size: 15px; line-height: 1.7;
+}
+.wrap {
+  max-width: 620px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 64px;
+  display: grid; gap: 16px;
+}
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand h1 {
+  margin: 0; font-family: var(--f-display); font-weight: 900;
+  font-size: 1.75rem; letter-spacing: 0.04em; line-height: 1.2;
+}
+.brand small { display: block; color: var(--muted); font-size: 0.78rem; letter-spacing: 0.08em; }
+.me { color: var(--muted); font-size: 0.85rem; }
+
+.composer {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px; display: grid; gap: 10px;
+}
+.composer textarea {
+  width: 100%; min-height: 84px; resize: vertical; border: 0; outline: 0;
+  background: transparent; color: var(--fg); font: inherit; font-size: 1.05rem;
+}
+.composer textarea::placeholder { color: var(--muted); }
+.kinds { display: flex; flex-wrap: wrap; gap: 6px; }
+.kinds label {
+  font-size: 0.8rem; padding: 3px 10px; border-radius: 999px; cursor: pointer;
+  background: var(--chip); color: var(--fg); border: 1px solid transparent;
+}
+.kinds input { position: absolute; opacity: 0; pointer-events: none; }
+.kinds input:checked + span { font-weight: 700; }
+.kinds label:has(input:checked) { border-color: var(--accent); color: var(--accent); }
+.kinds label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.dish { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+.dish svg { width: 44px; height: 22px; }
+.dish.over { color: var(--danger); }
+button {
+  font: inherit; cursor: pointer; border-radius: 999px; border: 0;
+}
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pour {
+  background: var(--accent); color: var(--accent-ink); font-weight: 700;
+  padding: 8px 22px; letter-spacing: 0.08em;
+}
+.pour:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); }
+.tabs button {
+  background: none; color: var(--muted); border-radius: 0; padding: 8px 14px;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.tabs button[aria-selected="true"] { color: var(--fg); font-weight: 700; border-color: var(--accent); }
+
+.feed { display: grid; gap: 0; }
+.post {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px;
+  padding: 14px 4px; border-bottom: 1px solid var(--line);
+}
+.avatar {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--soy);
+  color: #F0E6DD; display: grid; place-items: center; font-weight: 700; overflow: hidden;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; font-size: 0.85rem; }
+.meta strong { font-size: 0.95rem; }
+.meta time { color: var(--muted); font-variant-numeric: tabular-nums; }
+.kind { font-size: 0.72rem; padding: 0 8px; border-radius: 999px; background: var(--chip); color: var(--accent); }
+.text { margin: 2px 0 6px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.actions { display: flex; gap: 18px; }
+.actions button {
+  background: none; color: var(--muted); padding: 2px 6px; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.85rem; font-variant-numeric: tabular-nums;
+}
+.actions button svg { width: 16px; height: 16px; }
+.actions button.on { color: var(--accent); font-weight: 700; }
+.actions button.del:hover { color: var(--danger); }
+.confirm { display: inline-flex; gap: 6px; align-items: center; font-size: 0.82rem; color: var(--danger); }
+.confirm button { padding: 2px 10px; border: 1px solid var(--line); }
+
+.empty, .notice { color: var(--muted); text-align: center; padding: 40px 12px; }
+.notice.err { color: var(--danger); }
+.example-tag { font-size: 0.72rem; color: var(--muted); border: 1px dashed var(--line); border-radius: 6px; padding: 0 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .post.new { animation: drip .4s ease-out; }
+  @keyframes drip { from { transform: translateY(-6px); opacity: .3; } to { transform: none; opacity: 1; } }
+  .dish .fill { transition: height .2s, y .2s; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <svg width="34" height="40" viewBox="0 0 34 40" aria-hidden="true">
+        <path d="M17 2 C17 2 4 18 4 26 a13 13 0 0 0 26 0 C30 18 17 2 17 2 Z" fill="var(--accent)"/>
+        <ellipse cx="12" cy="24" rx="3" ry="5" fill="var(--bg)" opacity=".35"/>
+      </svg>
+      <div>
+        <h1>醤油ついったー</h1>
+        <small>ひとこと、ひとたらし。大さじ1杯＝140字まで</small>
+      </div>
+    </div>
+    <div class="me" id="me"></div>
+  </header>
+
+  <form class="composer" id="composer" autocomplete="off">
+    <label for="text" class="sr" hidden>投稿内容</label>
+    <textarea id="text" maxlength="400" placeholder="今日の一滴を、どうぞ。（例：卵かけご飯には再仕込みが合う）"></textarea>
+    <div class="kinds" role="radiogroup" aria-label="醤油の種類">
+      <label><input type="radio" name="kind" id="k-koi" value="濃口" checked><span>濃口</span></label>
+      <label><input type="radio" name="kind" id="k-usu" value="薄口"><span>薄口</span></label>
+      <label><input type="radio" name="kind" id="k-tamari" value="たまり"><span>たまり</span></label>
+      <label><input type="radio" name="kind" id="k-sai" value="再仕込み"><span>再仕込み</span></label>
+      <label><input type="radio" name="kind" id="k-shiro" value="白"><span>白</span></label>
+    </div>
+    <div class="bar">
+      <div class="dish" id="dish">
+        <svg viewBox="0 0 44 22" aria-hidden="true">
+          <defs><clipPath id="bowl"><path d="M2 4 h40 q-3 16 -20 16 q-17 0 -20 -16 Z"/></clipPath></defs>
+          <rect class="fill" x="0" y="22" width="44" height="0" fill="var(--soy)" clip-path="url(#bowl)"/>
+          <path d="M2 4 h40 q-3 16 -20 16 q-17 0 -20 -16 Z" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+        </svg>
+        <span id="count">0.0 / 15 ml</span>
+      </div>
+      <button class="pour" id="pour" type="submit" disabled>たらす</button>
+    </div>
+  </form>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" id="tab-all" aria-selected="true">みんなの小皿</button>
+    <button role="tab" id="tab-top" aria-selected="false">よくしみた</button>
+    <button role="tab" id="tab-mine" aria-selected="false">じぶん</button>
+  </div>
+
+  <div class="feed" id="feed" aria-live="polite">
+    <div class="notice" id="status">小皿を用意しています…</div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const MAX = 140, ML = 15;
+  const $ = (s) => document.querySelector(s);
+  const feedEl = $("#feed"), textEl = $("#text"), pourBtn = $("#pour");
+  const ICON_DROP = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5S3 7.5 3 10.5a5 5 0 0 0 10 0C13 7.5 8 1.5 8 1.5Z" fill="currentColor"/></svg>';
+  const ICON_REPLY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4 2 8l4 4M2.5 8H10a4 4 0 0 1 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+
+  // 例として最初に表示する投稿（ストアが空・未接続のときだけ）
+  const EXAMPLES = [
+    { uid: "ex1", id: "e1", text: "刺身にはたまり。とろみが身にからんで、わさびの辛さがまるくなる。", kind: "たまり", at: Date.now() - 1000*60*12 },
+    { uid: "ex2", id: "e2", text: "薄口は色が薄いだけで、塩分は濃口より高め。うどんのつゆで知った。", kind: "薄口", at: Date.now() - 1000*60*60*3 },
+    { uid: "ex3", id: "e3", text: "卵かけご飯に再仕込みを一滴。今日はこれで勝ち。", kind: "再仕込み", at: Date.now() - 1000*60*60*26 },
+  ];
+
+  let db = null, user = null, myId = null, canWrite = false;
+  let people = {};     // uid -> { posts: [], likes: {key:true} }
+  let profiles = {};
+  let tab = "all";
+  let pendingDelete = null;
+  let seen = new Set();
+  let writing = false;
+
+  // ---- composer ----
+  function updateCount() {
+    const n = [...textEl.value].length;
+    const ml = (n / MAX * ML);
+    $("#count").textContent = ml.toFixed(1) + " / " + ML + " ml";
+    const ratio = Math.min(n / MAX, 1);
+    const fill = document.querySelector(".dish .fill");
+    const h = 16 * ratio;
+    fill.setAttribute("y", String(20 - h));
+    fill.setAttribute("height", String(h));
+    $("#dish").classList.toggle("over", n > MAX);
+    pourBtn.disabled = !canWrite || n === 0 || n > MAX || !textEl.value.trim() || writing;
+  }
+  textEl.addEventListener("input", () => {
+    updateCount();
+    try { localStorage.setItem("shoyu-draft", textEl.value); } catch (e) {}
+  });
+  try { textEl.value = localStorage.getItem("shoyu-draft") || ""; } catch (e) {}
+
+  $("#composer").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const text = textEl.value.trim();
+    if (!text || [...text].length > MAX || !canWrite) return;
+    const kind = document.querySelector('input[name="kind"]:checked').value;
+    const mine = people[myId] || { posts: [], likes: {} };
+    const post = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), text, kind, at: Date.now() };
+    const next = { posts: [post, ...(mine.posts || [])].slice(0, 200), likes: mine.likes || {} };
+    await save(next, () => {
+      textEl.value = "";
+      try { localStorage.removeItem("shoyu-draft"); } catch (e) {}
+      updateCount();
+    });
+  });
+
+  async function save(next, onDone) {
+    if (!db || !myId) return;
+    writing = true; updateCount();
+    try {
+      await db.collection("shoyu").doc(myId).set(next);
+      onDone && onDone();
+    } catch (err) {
+      showToast("保存できませんでした。編集権限があるか確認して、もう一度お試しください。");
+    } finally {
+      writing = false; updateCount();
+    }
+  }
+
+  // ---- tabs ----
+  ["all", "top", "mine"].forEach((t) => {
+    $("#tab-" + t).addEventListener("click", () => {
+      tab = t;
+      document.querySelectorAll(".tabs button").forEach((b) => b.setAttribute("aria-selected", String(b.id === "tab-" + t)));
+      render(!db);
+    });
+  });
+
+  // ---- data shaping ----
+  function allPosts() {
+    const out = [];
+    for (const [uid, p] of Object.entries(people)) {
+      for (const post of (p.posts || [])) out.push({ ...post, uid });
+    }
+    return out;
+  }
+  function likeCounts() {
+    const c = {};
+    for (const p of Object.values(people)) {
+      for (const key of Object.keys(p.likes || {})) c[key] = (c[key] || 0) + 1;
+    }
+    return c;
+  }
+
+  function ago(t) {
+    const s = Math.max(0, (Date.now() - t) / 1000);
+    if (s < 60) return "たった今";
+    if (s < 3600) return Math.floor(s / 60) + "分前";
+    if (s < 86400) return Math.floor(s / 3600) + "時間前";
+    const d = new Date(t);
+    return (d.getMonth() + 1) + "月" + d.getDate() + "日";
+  }
+
+  // ---- render ----
+  async function render(examples) {
+    let posts = examples ? EXAMPLES.slice() : allPosts();
+    const counts = examples ? { "ex1/e1": 4, "ex2/e2": 2, "ex3/e3": 7 } : likeCounts();
+    if (!examples) {
+      if (tab === "mine") posts = posts.filter((p) => p.uid === myId);
+    }
+    if (tab === "top") posts.sort((a, b) => (counts[b.uid + "/" + b.id] || 0) - (counts[a.uid + "/" + a.id] || 0) || b.at - a.at);
+    else posts.sort((a, b) => b.at - a.at);
+
+    if (!examples) {
+      const ids = [...new Set(posts.map((p) => p.uid))];
+      if (user && ids.length) { try { profiles = await user.profiles(ids); } catch (e) {} }
+    }
+
+    feedEl.textContent = "";
+    if (!posts.length) {
+      const d = document.createElement("div");
+      d.className = "empty";
+      d.textContent = tab === "mine" ? "まだ投稿がありません。上の欄に書いて「たらす」を押すと、ここに並びます。" : "小皿はまだ空です。最初のひとたらしをどうぞ。";
+      feedEl.appendChild(d);
+      return;
+    }
+    const myLikes = (people[myId] && people[myId].likes) || {};
+    for (const p of posts) {
+      const key = p.uid + "/" + p.id;
+      const el = document.createElement("article");
+      el.className = "post" + (!seen.has(key) && seen.size ? " new" : "");
+      const prof = profiles[p.uid];
+      const name = examples ? ({ ex1: "刺身担当", ex2: "関西のうどん好き", ex3: "朝ごはん係" })[p.uid] : ((prof && prof.name) || "名無しの醸造家");
+
+      const av = document.createElement("div");
+      av.className = "avatar";
+      if (prof && prof.avatarUrl) { const img = document.createElement("img"); img.src = prof.avatarUrl; img.alt = ""; av.appendChild(img); }
+      else av.textContent = [...name][0];
+
+      const body = document.createElement("div");
+      body.style.minWidth = "0";
+      const meta = document.createElement("div"); meta.className = "meta";
+      const st = document.createElement("strong"); st.textContent = name; meta.appendChild(st);
+      const kd = document.createElement("span"); kd.className = "kind"; kd.textContent = p.kind || "濃口"; meta.appendChild(kd);
+      const tm = document.createElement("time"); tm.dateTime = new Date(p.at).toISOString(); tm.textContent = ago(p.at); meta.appendChild(tm);
+      if (examples) { const ex = document.createElement("span"); ex.className = "example-tag"; ex.textContent = "表示例"; meta.appendChild(ex); }
+
+      const tx = document.createElement("p"); tx.className = "text"; tx.textContent = p.text;
+
+      const acts = document.createElement("div"); acts.className = "actions";
+      const like = document.createElement("button");
+      like.type = "button";
+      const liked = !!myLikes[key];
+      like.className = liked ? "on" : "";
+      like.setAttribute("aria-pressed", String(liked));
+      like.innerHTML = ICON_DROP;
+      const lc = document.createElement("span"); lc.textContent = "しみた " + (counts[key] || 0); like.appendChild(lc);
+      like.disabled = examples || !canWrite;
+      like.addEventListener("click", () => toggleLike(key));
+      acts.appendChild(like);
+
+      const rep = document.createElement("button");
+      rep.type = "button"; rep.innerHTML = ICON_REPLY;
+      const rs = document.createElement("span"); rs.textContent = "かけ返す"; rep.appendChild(rs);
+      rep.disabled = examples || !canWrite;
+      rep.addEventListener("click", () => {
+        textEl.value = "@" + name + " " + textEl.value;
+        textEl.focus(); updateCount();
+      });
+      acts.appendChild(rep);
+
+      if (!examples && p.uid === myId) {
+        if (pendingDelete === key) {
+          const c = document.createElement("span"); c.className = "confirm";
+          c.append("消しますか？");
+          const yes = document.createElement("button"); yes.type = "button"; yes.textContent = "消す";
+          yes.addEventListener("click", () => removePost(p.id));
+          const no = document.createElement("button"); no.type = "button"; no.textContent = "やめる";
+          no.addEventListener("click", () => { pendingDelete = null; render(); });
+          c.append(yes, no); acts.appendChild(c);
+        } else {
+          const del = document.createElement("button"); del.type = "button"; del.className = "del"; del.textContent = "ふきとる";
+          del.addEventListener("click", () => { pendingDelete = key; render(); });
+          acts.appendChild(del);
+        }
+      }
+
+      body.append(meta, tx, acts);
+      el.append(av, body);
+      feedEl.appendChild(el);
+    }
+    posts.forEach((p) => seen.add(p.uid + "/" + p.id));
+  }
+
+  async function toggleLike(key) {
+    if (!canWrite || writing) return;
+    const mine = people[myId] || { posts: [], likes: {} };
+    const likes = { ...(mine.likes || {}) };
+    if (likes[key]) delete likes[key]; else likes[key] = true;
+    await save({ posts: mine.posts || [], likes });
+  }
+  async function removePost(id) {
+    const mine = people[myId] || { posts: [], likes: {} };
+    pendingDelete = null;
+    await save({ posts: (mine.posts || []).filter((p) => p.id !== id), likes: mine.likes || {} });
+  }
+
+  function showToast(msg) {
+    const n = document.createElement("div");
+    n.className = "notice err"; n.textContent = msg;
+    feedEl.prepend(n);
+    setTimeout(() => n.remove(), 6000);
+  }
+
+  // ---- boot ----
+  render(true);
+  updateCount();
+  setInterval(() => { if (db) render(); }, 60000);
+
+  (async () => {
+    const c = window.claude;
+    if (!c || !c.use) { setOffline(); return; }
+    const [d, u] = await Promise.all([c.use("db"), c.use("user")]);
+    db = d; user = u;
+    if (!db) { setOffline(); return; }
+    try { myId = user ? await user.id() : null; } catch (e) {}
+    try {
+      if (user) {
+        const me = await user.me();
+        $("#me").textContent = me.name ? me.name + " さんとして参加中" : "";
+      }
+      const may = user ? await user.can("data.write") : null;
+      canWrite = !!myId && may !== false;
+    } catch (e) { canWrite = !!myId; }
+    if (!canWrite) $("#text").placeholder = "閲覧のみの権限です。投稿するには編集権限が必要です。";
+    updateCount();
+
+    let loaded = false;
+    const timer = setTimeout(() => {
+      if (!loaded) { feedEl.textContent = ""; const n = document.createElement("div"); n.className = "notice err"; n.textContent = "小皿の読み込みに時間がかかっています。ページを開き直してください。"; feedEl.appendChild(n); }
+    }, 10000);
+    db.collection("shoyu").onSnapshot((snap) => {
+      loaded = true; clearTimeout(timer);
+      const next = {};
+      snap.docs.forEach((doc) => { const v = doc.data(); if (v) next[doc.id] = { posts: Array.isArray(v.posts) ? v.posts : [], likes: v.likes || {} }; });
+      people = next;
+      render();
+    }, () => {
+      loaded = true; clearTimeout(timer);
+      showToast("投稿を読み込めませんでした。");
+    });
+  })();
+
+  function setOffline() {
+    canWrite = false; updateCount();
+    $("#me").textContent = "表示例を表示中（サインインすると投稿できます）";
+  }
+})();
+</script>
