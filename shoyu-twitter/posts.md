@@ -97,36 +97,67 @@ JAS（日本農林規格）が定める醤油の5分類を、量で見てみま�
 
 ---
 
-## ストック（次回以降に使う。11/15作成）
+## ストック（次回以降に使う）
 
-### S1（歴史：湯浅）
-鎌倉時代、宋で修行した僧・覚心が径山寺味噌を伝え、その桶の底にたまった液が醤油の始まりになった。そんな言い伝えが和歌山の湯浅にあります。湯浅は2017年、「醤油醸造の発祥の地」として日本遺産に認定されました。
-- 出典：https://www.ana.co.jp/ja/jp/japan-travel-planner/wakayama/0000012.html / https://www.walkerplus.com/article/129329/ / https://kyodonewsprwire.jp/prwfile/release/M104387/201704281341/_prw_PR1fl_2y7lEZY1.pdf
-- メモ：覚心の話は「言い伝え」として書いた（資料も「といわれる」表現）。
-
-### S2（地域：龍野のうすくち）
-兵庫・龍野のうすくち醤油は、寛文6年（1666年）に始まったとされます。もろみに甘酒を加えて搾ったら、色が薄く香りのよい醤油になった、という話が伝わっています。龍野は古くからの酒どころでもありました。
-- 出典：https://web.pref.hyogo.lg.jp/sr09/jibasan/05.html / https://tabi-mag.jp/hg0137/ / https://www.pref.osaka.lg.jp/o070080/toshimiryoku/osakathemuseum/dashi/oosakanodashi019.html
-
-### S3（種類：白醤油）
-白醤油は愛知県碧南市の生まれ。原料はほぼ小麦で、大豆はわずか。熟成は3か月ほどと短く、色は淡口よりさらに薄い琥珀色です。醤油全体の生産量の1％にも届かない、めずらしい醤油です。
-- 出典：https://sakidori.co/article/922705 / https://macaro-ni.jp/34007 / https://intojapanwaraku.com/?p=54421
-- メモ：「1％弱」「熟成約3か月」は1記事のみ。日本醤油協会の統計で要確認。
-
-### S4（地域：柳井の甘露醤油）
-山口県柳井の「甘露醤油」は、塩水の代わりに醤油で仕込む再仕込み醤油。天明年間（1781〜89年）ごろ、高田家4代目の伝兵衛が考えたと家の記録にあります。岩国の殿様が「甘露、甘露」とほめた、という逸話も。
-- 出典：https://www.kikkoman.com/jp/kiifc/publication/foodculture/pdf/no29_j_015_020.pdf / https://yamaguchi-tourism.jp/movie/detail_37.html
-- メモ：起源は高田家の明治期の記録（『高田氏甘露醤油記録』）による。
-
-### S5（楽しみ方：燻製醤油）
-燻製醤油は、いつもの醤油を桜などのチップでいぶして香りをつけたもの。浅く広い容器に入れると香りが移りやすいそうです。数滴で燻した香りが加わるので、冷奴や卵かけごはんで試してみるつもりです。
-- 出典：https://macaro-ni.jp/52784 / https://www.justonecookbook.com/wprm_print/smoked-soy-sauce
-
-### S6（味わい：開けたあとの色）
-醤油は開けて空気に触れると、少しずつ色が濃くなり、風味も落ちていきます。品質の変化はまず色に表れるそうです。開けたら冷蔵庫へ。二重構造のボトルのように、開けたあとも常温でよいものもあります。
-- 出典：https://www.soysauce.or.jp/（協会資料、検索結果の引用で確認）/ https://macaro-ni.jp/39224?page=3（キッコーマンの保存の案内として紹介）
+S1〜S6 は第3回で使用（第3回 #3, #4, #6, #7, #9, #10）。
 
 ### S7（ニュース・予備／要確認）
 11月14日、福島県喜多方市で「第11回全国醤油サミット」が開かれました。11回目を迎えた醤油の集まりです。どんな話が出たのか、記事が出たら読んでみます。
 - 出典：https://www.wakaki-kura.jp/news/（喜多方の蔵元のお知らせ）/ https://gokujo-aizu.com/eventinfo/23448/
 - メモ：どちらも検索結果の要約でのみ確認。ページを開いて開催日・名称を確かめるまで予約しない。
+- 11/22 メモ：開催から日がたったため、ニュースとしては見送り。
+
+---
+
+## 第3回（2026-11-22作成／11/30〜12/6分）
+
+調べ方のメモ：引き続き、ページを直接開けず WebSearch の検索結果（要約と引用）で確認。
+ニュース：この1週間で確認できた醤油ニュースは1本（#1）。ほかの候補（全国醤油品評会の受賞、蔵元の値上げ、共同開発の発表）は、時期が古い、ネガティブに読める、または裏付けが取れないため見送り。
+
+### 1（ニュース：チョーコー醤油 金蝶ソース）
+長崎のチョーコー醤油の「金蝶ソース」が、第14回地域食品産業貢献賞に選ばれました。皿うどんの定番の相棒として地元に根づいていることが評価されたそうです。チョーコー醤油の源流は、1941年に長崎県内の醤油屋29軒が始めた共同事業です。
+- 出典：https://news.nissyoku.co.jp/news/nishikawa20260825124648096（日本食糧新聞：第14回地域食品産業貢献賞、7社選定、11月12日表彰式）/ https://news.nissyoku.co.jp/news/oya20260929114427043（チョーコー醤油の特集）
+- メモ：賞は日本食糧新聞社の制定。受賞部門「ブランド商品信頼貢献」。記事本文は会員限定で、見出しと要旨のみ確認。
+
+### 2（歴史：醤院）
+古代の律令では、宮中の食事を受け持つ「大膳職」の中に「醤院」という部署が置かれていたそうです。醤（ひしお）は、穀物などを塩漬けにして発酵させた調味料で、醤油のルーツとされるもの。醤を扱う役所が、はるか昔からあったわけです。
+- 出典：https://japanese-wiki-corpus.github.io/history/Daizenshiki%20(Office%20of%20the%20Palace%20Table).html（大膳職、養老令に醤院）/ https://www.maff.go.jp/j/keikaku/syokubunka/traditional-foods/menu/kodaihisio-narasyouyu.html（農水省：ひしお）
+- メモ：設置年（701年の大宝律令か）は未確認のため本文に年を入れていない。醤院の読みも未確認で入れていない。
+
+### 3（歴史：湯浅（旧S1））
+鎌倉時代、宋で修行した僧・覚心が径山寺味噌を伝え、その桶の底にたまった液が醤油の始まりになった。そんな言い伝えが和歌山の湯浅にあります。湯浅は2017年、「醤油醸造の発祥の地」として日本遺産に認定されました。
+- 出典：https://www.ana.co.jp/ja/jp/japan-travel-planner/wakayama/0000012.html / https://www.walkerplus.com/article/129329/ / https://kyodonewsprwire.jp/prwfile/release/M104387/201704281341/_prw_PR1fl_2y7lEZY1.pdf
+- メモ：覚心の話は「言い伝え」として書いた。
+
+### 4（歴史・地域：龍野のうすくち（旧S2））
+兵庫・龍野のうすくち醤油は、寛文6年（1666年）に始まったとされます。もろみに甘酒を加えて搾ったら、色が薄く香りのよい醤油になった、という話が伝わっています。龍野は古くからの酒どころでもありました。
+- 出典：https://web.pref.hyogo.lg.jp/sr09/jibasan/05.html / https://tabi-mag.jp/hg0137/ / https://www.pref.osaka.lg.jp/o070080/toshimiryoku/osakathemuseum/dashi/oosakanodashi019.html
+
+### 5（種類：たまり醤油）
+東海地方の「たまり醤油」は、原料のほとんどが大豆。豆味噌を仕込む途中でたまった液を取り出したのが始まりとされます。塩水を少なめにして1年以上熟成させるので、色が濃く、とろみと旨味があります。愛知・岐阜・三重で多く使われてきました。
+- 出典：https://www.kikkoman.com/jp/kiifc/publication/foodculture/pdf/no28_j_019_025.pdf / https://intojapanwaraku.com/travel/70239/ / https://www.maff.go.jp/j/keikaku/syokubunka/traditional-foods/bunrui/shouyu-miso.html
+
+### 6（種類：白醤油（旧S3））
+白醤油は愛知県碧南市の生まれ。原料はほぼ小麦で、大豆はわずか。熟成は3か月ほどと短く、色は淡口よりさらに薄い琥珀色です。今も主に愛知県で造られています。
+- 出典：https://sakidori.co/article/922705 / https://macaro-ni.jp/34007 / https://intojapanwaraku.com/?p=54421
+- メモ：第2回#5で量に触れたので「1％弱」の文は削った。
+
+### 7（地域：柳井の甘露醤油（旧S4））
+山口県柳井の「甘露醤油」は、塩水の代わりに醤油で仕込む再仕込み醤油。天明年間（1781〜89年）ごろ、高田家4代目の伝兵衛が考えたと家の記録にあります。岩国の殿様が「甘露、甘露」とほめた、という逸話も。
+- 出典：https://www.kikkoman.com/jp/kiifc/publication/foodculture/pdf/no29_j_015_020.pdf / https://yamaguchi-tourism.jp/movie/detail_37.html
+- メモ：起源は高田家の明治期の記録による。
+
+### 8（醤油の仲間：しょっつる）
+秋田の「しょっつる」は、ハタハタと塩で造る魚醤。石川の「いしる」、香川の「いかなご醤油」とあわせて、三大魚醤と呼ばれます。秋田では1992年から3年間ハタハタが禁漁になり、ハタハタだけで造る人が一時いなくなったそうです。
+- 出典：https://www.maff.go.jp/j/keikaku/syokubunka/k_ryouri/area_stories/akita.html（農水省：三大魚醤）/ https://newswitch.jp/p/11731（禁漁と生産者）/ https://www.pref.akita.lg.jp/uploads/public/archive_0000010320_00/arifletter212.pdf（秋田県：禁漁期間）
+
+### 9（楽しみ方：燻製醤油（旧S5））
+燻製醤油は、いつもの醤油を桜などのチップでいぶして香りをつけたもの。浅く広い容器に入れると香りが移りやすいそうです。数滴で燻した香りが加わるので、冷奴や卵かけごはんで試してみるつもりです。
+- 出典：https://macaro-ni.jp/52784 / https://www.justonecookbook.com/wprm_print/smoked-soy-sauce
+
+### 10（味わい：開けたあとの色（旧S6））
+醤油は開けて空気に触れると、少しずつ色が濃くなり、風味も落ちていきます。品質の変化はまず色に表れるそうです。開けたら冷蔵庫へ。二重構造のボトルのように、開けたあとも常温でよいものもあります。
+- 出典：https://www.soysauce.or.jp/（協会資料、検索結果の引用で確認）/ https://macaro-ni.jp/39224?page=3
+
+### 予約案（毎日12:00）
+11/30 #1, 12/1 #3, 12/2 #5, 12/3 #2, 12/4 #6, 12/5 #4, 12/6 #8。予備 #7, #9, #10。
